@@ -37,23 +37,31 @@ export const Skills = () => {
                             <h2>
                                 Skills
                             </h2>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<br></br> Consectetur earum maiores voluptatibus officia</p>
+                            <p>Currently working on my Backend Development skills and<br></br>practising Data Structure and Algorithms.</p>
                             <Carousel responsive={responsive} infinite={true} className="skill-slider">
                                 <div className='item'>
-                                    <img src={meter1} alt="Image" />
-                                    <h5>Web Development</h5>
+                                    <img src={meter3} alt="Image" />
+                                    <h5>C++</h5> 
                                 </div>
                                 <div className='item'>
                                     <img src={meter2} alt="Image" />
-                                    <h5>Logo Design</h5>
+                                    <h5>C</h5>
+                                </div>
+                                <div className='item'>
+                                    <img src={meter2} alt="Image" />
+                                    <h5>Competitive Programming</h5>
                                 </div>
                                 <div className='item'>
                                     <img src={meter3} alt="Image" />
-                                    <h5>Web Development</h5>
+                                    <h5>HTML and CSS</h5>
                                 </div>
                                 <div className='item'>
-                                    <img src={meter1} alt="Image" />
-                                    <h5>Web Development</h5>
+                                    <img src={meter2} alt="Image" />
+                                    <h5>JavaScript</h5>
+                                </div>
+                                <div className='item'>
+                                    <img src={meter2} alt="Image" />
+                                    <h5>React</h5>
                                 </div>
                             </Carousel>
                         </div>

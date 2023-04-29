@@ -3,6 +3,9 @@ import { Col, Container, Row } from 'react-bootstrap'
 import { ArrowRightCircle } from 'react-bootstrap-icons'
 import headerImg from '../assets/img/header-img.svg'
 import { useState, useEffect } from 'react'
+import 'animate.css';
+import TrackVisibility from 'react-on-screen';
+
 
 export const Banner = () => {
     const [loopNum, setLoopNum] = useState(0);
@@ -29,7 +32,7 @@ export const Banner = () => {
         setText(updatedText);
         if (isDeleting) {
             setDelta(prevDelta => prevDelta / 2)
-        } 
+        }
         if (!isDeleting && updatedText == fullText) {
             setIsDeleting(true);
             setDelta(period);
@@ -45,12 +48,17 @@ export const Banner = () => {
             <Container>
                 <Row className='align-items-center'>
                     <Col xs={12} md={6} xl={7}>
-                        <span className='tagline'>Welcome to my Portfolio</span>
-                        <h1>
-                            {`Hello, I'm Yuvika Singh. `}<span className='wrap'>{text}</span>
-                        </h1>
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae ratione, sit iusto at quidem perferendis accusantium asperiores cum cupiditate fuga perspiciatis incidunt blanditiis facere omnis molestiae libero quam. Nisi, numquam?</p>
-                        <button onClick={() => console.log('connect')}> Let's Connect <ArrowRightCircle size={25}></ArrowRightCircle></button>
+                        <TrackVisibility>
+                            {({ isVisible }) =>
+                                <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
+                                    <span className='tagline'>Welcome to my Portfolio</span>
+                                    <h1>
+                                        {`Hello, I'm Yuvika Singh. `}<span className='wrap'>{text}</span>
+                                    </h1>
+                                    <p>Currently pursuing B.Tech. in Computer Science and Engineering from Ajay Kumar Garg Engineering College, Ghaziabad.</p>
+                                    <button onClick={() => console.log('connect')}> Let's Connect <ArrowRightCircle size={25}></ArrowRightCircle></button>
+                                </div>}
+                        </TrackVisibility>
                     </Col>
                     <Col xs={12} md={6} xl={5}>
                         <img src={headerImg} alt="Header Image" />

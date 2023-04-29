@@ -4,6 +4,8 @@ import projImg2 from '../assets/img/project-img2.png';
 import projImg3 from '../assets/img/project-img3.png';
 import colorSharp2 from '../assets/img/color-sharp2.png';
 import { ProjectCard } from "./ProjectCard";
+import 'animate.css';
+import TrackVisibility from "react-on-screen";
 
 export const Projects = () => {
 
@@ -23,6 +25,11 @@ export const Projects = () => {
             description: "Design & Development",
             imgUrl: projImg3,
         },
+        {
+            title: "Business Startup",
+            description: "Design & Development",
+            imgUrl: projImg3,
+        },
     ];
 
     return (
@@ -30,8 +37,13 @@ export const Projects = () => {
             <Container>
                 <Row>
                     <Col>
-                        <h2>Projects</h2>
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Hic na</p>
+                        <TrackVisibility>
+                            {({ isVisible }) =>
+                                <div className={isVisible ? "animate__animated animate__bounce" : ""}>
+                                    <h2>Projects</h2>
+                                    <p>Some of my projects are shown below.</p>
+                                </div>}
+                        </TrackVisibility>
                         <Tab.Container id="projects-tabs" defaultActiveKey="first">
                             <Nav variant="pills" className="nav-pills mb-5 justify-content-center align-items-center" id="pills-tab">
                                 <Nav.Item>
@@ -57,10 +69,10 @@ export const Projects = () => {
                                     </Row>
                                 </Tab.Pane>
                                 <Tab.Pane eventKey="second">
-                                    Lorem Ipsum
+                                    Still working on it.
                                 </Tab.Pane>
                                 <Tab.Pane eventKey="third">
-                                    Lorem Ipsum
+                                    Still working on it.
                                 </Tab.Pane>
                             </Tab.Content>
                         </Tab.Container>
