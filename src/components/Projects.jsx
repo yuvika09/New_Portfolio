@@ -2,6 +2,8 @@ import { Container, Row, Col, Nav, Tab } from "react-bootstrap";
 import projImg1 from '../assets/img/project-img1.png';
 import projImg2 from '../assets/img/project-img2.png';
 import projImg3 from '../assets/img/project-img3.png';
+import projImg4 from '../assets/img/project-img4.png';
+import projImg5 from '../assets/img/project-img5.png';
 import colorSharp2 from '../assets/img/color-sharp2.png';
 import { ProjectCard } from "./ProjectCard";
 import 'animate.css';
@@ -9,27 +11,35 @@ import TrackVisibility from "react-on-screen";
 
 export const Projects = () => {
 
-    const projects = [
+    const projects1 = [
         {
-            title: "Business Startup",
+            title: "Weather App",
             description: "Design & Development",
             imgUrl: projImg1,
         },
         {
-            title: "Business Startup",
+            title: "News App",
             description: "Design & Development",
             imgUrl: projImg2,
         },
         {
-            title: "Business Startup",
+            title: "Contact Manager App",
             description: "Design & Development",
             imgUrl: projImg3,
+        }
+    ];
+
+    const projects2 = [
+        {
+            title: "Personal Portfolio",
+            description: "Design & Development",
+            imgUrl: projImg4,
         },
         {
-            title: "Business Startup",
+            title: "Restaurant Website",
             description: "Design & Development",
-            imgUrl: projImg3,
-        },
+            imgUrl: projImg5,
+        }
     ];
 
     return (
@@ -60,7 +70,7 @@ export const Projects = () => {
                                 <Tab.Pane eventKey="first">
                                     <Row>
                                         {
-                                            projects.map((project, index) => {
+                                            projects1.map((project, index) => {
                                                 return (
                                                     <ProjectCard key={index}{...project} />
                                                 )
@@ -69,10 +79,18 @@ export const Projects = () => {
                                     </Row>
                                 </Tab.Pane>
                                 <Tab.Pane eventKey="second">
-                                    Still working on it.
+                                    <Row>
+                                        {
+                                            projects2.map((project, index) => {
+                                                return (
+                                                    <ProjectCard key={index}{...project} />
+                                                )
+                                            })
+                                        }
+                                    </Row>
                                 </Tab.Pane>
                                 <Tab.Pane eventKey="third">
-                                    Still working on it.
+                                    <p>Still working on it.</p>
                                 </Tab.Pane>
                             </Tab.Content>
                         </Tab.Container>

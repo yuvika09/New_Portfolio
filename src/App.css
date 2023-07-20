@@ -439,7 +439,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   margin-bottom: 24px;
   margin-left: 15px;
   width: 95%;
-  height: 85%;
+  height: 80%;
 }
 
 .proj-imgbx::before {
@@ -454,7 +454,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
 .proj-imgbx:hover::before {
   height: 100%;
-}
+} 
 
 .proj-txtx {
   position: absolute;
