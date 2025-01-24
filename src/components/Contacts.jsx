@@ -26,20 +26,41 @@ export const Contacts = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setButtonText("Sending...");
-        let response = await fetch("http://localhost:3000/contact", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json;charset=utf-8",
-            },
-            body: JSON.stringify(formDetails),
-        });
-        setButtonText("Send");
-        let result = await response.json();
-        setFormDetails(formInitialDetails);
-        if (result.code === 200) {
-            setStatus({ succes: true, message: 'Message sent successfully' });
-        } else {
-            setStatus({ succes: false, message: 'Something went wrong, please try again later.' });
+        try {
+            // Add timeout to prevent indefinite hanging
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
+    
+            let response = await fetch("http://localhost:5000/contact", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json;charset=utf-8",
+                },
+                body: JSON.stringify(formDetails),
+                signal: controller.signal
+            });
+    
+            clearTimeout(timeoutId);
+            setButtonText("Send");
+            
+            let result = await response.json();
+            setFormDetails(formInitialDetails);
+    
+            if (result.code === 200) {
+                setStatus({ success: true, message: 'Message sent successfully' });
+            } else {
+                setStatus({ success: false, message: 'Something went wrong, please try again later.' });
+            }
+        } catch (error) {
+            console.error("Submission error:", error);
+            setButtonText("Send");
+            
+            // Different error messages based on error type
+            if (error.name === 'AbortError') {
+                setStatus({ success: false, message: 'Request timed out. Please check your connection.' });
+            } else {
+                setStatus({ success: false, message: 'Network error. Please try again.' });
+            }
         }
     };
 
@@ -65,7 +86,7 @@ export const Contacts = () => {
                                                 <input type="text" value={formDetails.firstName} placeholder="First Name" onChange={(e) => onFormUpdate('firstName', e.target.value)} />
                                             </Col>
                                             <Col size={12} sm={6} className="px-1">
-                                                <input type="text" value={formDetails.lasttName} placeholder="Last Name" onChange={(e) => onFormUpdate('lastName', e.target.value)} />
+                                                <input type="text" value={formDetails.lastName} placeholder="Last Name" onChange={(e) => onFormUpdate('lastName', e.target.value)} />
                                             </Col>
                                             <Col size={12} sm={6} className="px-1">
                                                 <input type="email" value={formDetails.email} placeholder="Email Address" onChange={(e) => onFormUpdate('email', e.target.value)} />
@@ -79,7 +100,7 @@ export const Contacts = () => {
                                             </Col>
                                             {
                                                 status.message &&
-                                                <Col>
+                                                <Col className="final-mes">
                                                     <p className={status.success === false ? "danger" : "success"}>{status.message}</p>
                                                 </Col>
                                             }

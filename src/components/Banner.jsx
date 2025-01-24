@@ -33,7 +33,7 @@ export const Banner = () => {
         if (isDeleting) {
             setDelta(prevDelta => prevDelta / 2)
         }
-        if (!isDeleting && updatedText == fullText) {
+        if (!isDeleting && updatedText === fullText) {
             setIsDeleting(true);
             setDelta(period);
         } else if (isDeleting && updatedText === '') {
@@ -55,13 +55,13 @@ export const Banner = () => {
                                     <h1>
                                         {`Hello, I'm Yuvika Singh. `}<span className='wrap'>{text}</span>
                                     </h1>
-                                    <p>Currently pursuing B.Tech. in Computer Science and Engineering from Ajay Kumar Garg Engineering College, Ghaziabad.</p>
-                                    <button onClick={() => console.log('connect')}> Let's Connect <ArrowRightCircle size={25}></ArrowRightCircle></button>
+                                    <p>Currently pursuing M.Tech in Computer Science and Engineering (Artificial Intelligence and Data Science) from Motilal Nehru National Institute of Technology, Allahabad.</p>
+                                    {/* <button onClick={() => console.log('connect')}> Let's Connect <ArrowRightCircle size={25}></ArrowRightCircle></button> */}
                                 </div>}
                         </TrackVisibility>
                     </Col>
                     <Col xs={12} md={6} xl={5}>
-                        <img src={headerImg} alt="Header Image" />
+                        <img src={headerImg} />
                     </Col>
                 </Row>
             </Container>
